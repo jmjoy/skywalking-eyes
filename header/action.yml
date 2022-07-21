@@ -41,15 +41,9 @@ inputs:
       default value is `check`.
     required: false
     default: check
-  subcommand:
-    description: |
-      Which subcommand License Eye should be run in. Choices are `header` or `dependency`. The
-      default value is `header`.
-    required: false
-    default: header
 runs:
   using: docker
-  image: Dockerfile
+  image: ../Dockerfile
   env:
     GITHUB_TOKEN: ${{ inputs.token }}
   args:
@@ -57,5 +51,5 @@ runs:
     - ${{ inputs.log }}
     - -c
     - ${{ inputs.config }}
-    - ${{ inputs.subcommand }}
+    - header
     - ${{ inputs.mode }}
